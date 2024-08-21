@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block cssstyles %}
+<link rel="stylesheet" href="{% static 'css/alerts.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/signup.css' %}" type="text/css">
+{% endblock %}
+{% block title %}Luxe | Sign Up{% endblock %}
+
+
+{% block content %}
+<main class="main-signup">
+    {% include 'layouts/messages.html' %}
+
+    <section class="section-1">
+        <div class="container-redirect-home">
+            <h1>SIGN UP FOR <a href="{% url 'home' %}">LUXE</a></h1>
+        </div>
+        <form action="{% url 'signup' %}" method="POST" class="form-signup">
+            {% csrf_token %}
+            <input type="text" name="first_name" id="id_first_name" placeholder="First name" autofocus>
+            <input type="text" name="last_name" id="id_last_name" placeholder="Last name">
+            <input type="email" name="email" id="id_email" placeholder="Example@gmail.com">
+            <input type="password" name="password1" id="id_password1" placeholder="Password">
+            <input type="password" name="password2" id="id_password2" placeholder="confirm password">
+            {{form.captcha}}
+            <button type="submit" class="btn-register-user">REGISTER</button>
+        </form>
+        <p class="text-btn-signin">already have an account? <a href="{% url 'signin' %}">SIGN IN</a></p>
+    </section>
+
+</main>
+{% endblock %}

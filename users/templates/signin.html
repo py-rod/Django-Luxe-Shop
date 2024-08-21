@@ -1,0 +1,29 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% block cssstyles %}
+<link rel="stylesheet" href="{% static 'css/signin.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/alerts.css' %}" type="text/css">
+{% endblock %}
+{% block title %}Luxe | Sign In{% endblock %}
+
+{% block content %}
+<main class="main-signin">
+    {% include 'layouts/messages.html' %}
+    <section class="section-1">
+        <h1 class="container-redirect-home">SIGN IN TO <a href="{% url 'home' %}">LUXE</a></h1>
+        <a href="{% provider_login_url 'google' %}" class="btn-google">
+            <img src="{% static 'icons/google.svg' %}" alt="google-icon">
+            continue with google
+        </a>
+        <form action="{% url 'signin' %}" method="POST" class="form-signin">
+            {% csrf_token %}
+            <input type="text" name="username" id="id_username" autocomplete="email" autofocus placeholder="Email">
+            <input type="password" name="password" id="id_password" placeholder="Password">
+            {{form.captcha}}
+            <button type="submit" class="btn-signin">LOG IN</button>
+        </form>
+        <p class="text-btn-signup">don't have an account? <a href="{% url 'signup' %}">SIGN UP</a></p>
+    </section>
+</main>
+{% endblock %}

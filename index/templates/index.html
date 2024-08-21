@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block cssstyles %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/alerts.css' %}" type="text/css">
+
+{% endblock%}
+
+
+{% block content %}
+{% include 'layouts/header.html' %}
+
+<main class="main-home">
+    {% include 'layouts/messages.html' %}
+
+    <section class="section-1">
+        <div class="container-slider-index">
+            <div class="slideshow-container">
+
+
+                <div class="mySlides fade fade1">
+                    <div>
+                        <h4>LIMITED TIME ONLY *</h4>
+                        <h1>
+                            SUMMER
+                            <strong>SALE</strong>
+                        </h1>
+                        <h4>UP TO 50% OFF</h4>
+                        <a href="#">SHOP NOW <span style="font-size: 1.2rem;">→</span></a>
+                    </div>
+                    <img src="{% static 'images/img-12.png' %}" alt="1" class="img-1 img-carousel1">
+                </div>
+
+                <div class="mySlides fade fade2" style="background-image: url('../static/images/img-2.png');">
+                </div>
+
+
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+
+            </div>
+            <br>
+
+            <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+            </div>
+            <script src="{% static 'js/slider_index.js' %}"></script>
+        </div>
+    </section>
+</main>
+{% endblock %}
