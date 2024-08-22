@@ -1,3 +1,12 @@
 from django.db import models
 
 # Create your models here.
+
+
+class Categories(models.Model):
+    title = models.CharField(max_length=100, unique=True, blank=False)
+    is_active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Categories'

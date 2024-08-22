@@ -53,6 +53,26 @@
                 </svg>
 
             </a>
+
+            {% if user.is_authenticated %}
+            <div class="container-dropdown-profile">
+                <div class="dropdown dropdownProfile" onclick="toggleDropdownMovil()">
+                    <button class="dropbtn">{{user.acronym_name}}</button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <div class="container-info-user-menu">
+                            <div class="container-info-user-names">
+                                <p title="{{user.first_name}} {{user.last_name}}">{{user.first_name}} {{user.last_name}}
+                                </p>
+                                <p title="{{user.email}}">{{user.email}}</p>
+                            </div>
+                        </div>
+                        <a href="#">Settings</a>
+                        <a href="{% url 'logout' %}">Logout</a>
+                    </div>
+                    <script src="{% static 'js/menu_movil.js' %}"></script>
+                </div>
+            </div>
+            {% else %}
             <a href="{% url 'signup' %}" class="header-link-account" title="Registrarse / Iniciar sesion">
                 <svg class="w-6 h-6 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="34.02" height="34.02"
                     viewBox="0 0 24 24">
@@ -61,6 +81,8 @@
                 </svg>
 
             </a>
+            {% endif %}
+
         </div>
     </nav>
 </header>

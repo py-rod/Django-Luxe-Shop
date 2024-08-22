@@ -58,6 +58,7 @@ PROJECTS_APPS = [
     'index',
     'users',
     'categories',
+    'subCategories',
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECTS_APPS

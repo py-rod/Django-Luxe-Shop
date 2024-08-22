@@ -7,6 +7,7 @@ urlpatterns = [
     path("account/users/activate/<uidb64>/<token>",
          views.activate, name="activate"),
     path('account/signin', views.signin, name='signin'),
+    path('accout/logout', views.closesession, name='logout'),
 
     # GOOGLE
     path("social/signup/", views.redirect_signin_with_google, name="signup_redirect"),

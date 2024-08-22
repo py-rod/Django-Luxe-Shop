@@ -112,3 +112,10 @@ def signin(request):
     return render(request, 'signin.html', {
         'form': form
     })
+
+
+@login_required(login_url='signin')
+def closesession(request):
+    logout(request)
+    messages.info(request, 'The session was closed')
+    return redirect('home')
