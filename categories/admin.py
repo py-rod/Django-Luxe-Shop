@@ -5,8 +5,9 @@ from .models import Categories
 
 @admin.register(Categories)
 class CategoriesAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'is_active']
-    list_display_links = ['id', 'title']
+    prepopulated_fields = {'slug': ('title',)}
+    list_display = ['id', 'title', 'slug', 'is_active']
+    list_display_links = ['id', 'title', 'slug']
     list_filter = ['is_active', ]
     list_per_page = 50
     search_fields = ['id', 'title']

@@ -5,8 +5,12 @@ from django.db import models
 
 class Categories(models.Model):
     title = models.CharField(max_length=100, unique=True, blank=False)
+    slug = models.SlugField(default='', blank=False, unique=True)
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = 'Categories'
+
+    def __str__(self):
+        return self.title
