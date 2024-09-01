@@ -1,5 +1,6 @@
 from django.db import models
 from categories.models import Categories
+from django.urls import reverse
 # Create your models here.
 
 
@@ -16,3 +17,6 @@ class SubCategories(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_products_of_the_subcategory(self):
+        return reverse('products_of_the_subcategory', args=[self.series.slug, self.slug])

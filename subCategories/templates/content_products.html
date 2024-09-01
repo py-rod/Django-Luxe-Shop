@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block cssstyles %}
+<link rel="stylesheet" href="{% static 'css/content_products.css' %}" type="text/css">
+{% endblock %}
+{% block title %}Luxe | {{title_window}}{% endblock %}
+
+
+{% block content %}
+{% include 'layouts/header.html' %}
+<main class="main-subcategory">
+    {% include 'layouts/messages.html' %}
+    <section class="section-1">
+
+    </section>
+</main>
+{% endblock %}

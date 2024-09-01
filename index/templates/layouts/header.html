@@ -28,7 +28,7 @@
                                 <details>
                                     <summary>{{category.title}}</summary>
                                     {% for subcategory in subcategories %}
-                                    <a href="#">{{subcategory.title}}</a>
+                                    <a href="{{subcategory.get_products_of_the_subcategory}}">{{subcategory.title}}</a>
                                     {% endfor %}
                                 </details>
 
