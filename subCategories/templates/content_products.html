@@ -11,7 +11,74 @@
 <main class="main-subcategory">
     {% include 'layouts/messages.html' %}
     <section class="section-1">
+        <ol class="ol-direct">
+            <li>Inicio</li>
+            <li>{{category}}</li>
+            <li>{{title_window}}</li>
+        </ol>
 
+        <div class="container-all-items">
+            <div class="content-filters">
+                <form action="" class="form-filter">
+                    {% csrf_token %}
+                    <div class="container-filter-button">
+                        <p>Filters:</p>
+                        <button type="submit">Apply</button>
+                    </div>
+
+                    <details class="details-brands" open>
+                        <summary>Brand</summary>
+                        {% for brand in brands %}
+
+                        <div class="diferent-brand">
+                            <div>
+                                <input type="checkbox" name="" id="">
+                                <p>{{brand.brand}}</p>
+                            </div>
+                            <span class="count">{{brand.count}}</span>
+
+                        </div>
+                        {% endfor %}
+                    </details>
+
+                    <details class="details-price">
+                        <summary>Price</summary>
+
+                        <select name="" id="">
+                            <option value="" selected="selected">Select option</option>
+                            <option value="">Mayor a Menor</option>
+                            <option value="">Menor a Mayor</option>
+                        </select>
+                    </details>
+                </form>
+            </div>
+
+            <div class="content-products">
+                <div class="container-total-products-text">
+                    <p>Showing <span>20 of {{products.count}}</span> products</p>
+                </div>
+                <ul class="container-card-products">
+                    {% for product in products %}
+                    <li class="card-product">
+                        <div class="container-img-card">
+                            {% if product.create >= today%}
+                            <span class="new-label-product">New</span>
+                            {% endif%}
+                            <img src="{{product.image.url}}" alt="{{product.name}}" class="img-product">
+                            <a href="#" class="add-to-card">
+                                <img src="{% static 'icons/add_cart.svg' %}" alt="add cart" class="icon-add-cart">
+                                Add to card
+                            </a>
+                        </div>
+                        <div class="container-title-price">
+                            <a href="#" class="product-title">{{product.name}}</a>
+                            <p class="product-price">${{product.price}}</p>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </section>
 </main>
 {% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block cssstyles %}
+{% endblock %}
+{% block title %}Luxe | {{product.name}}{% endblock %}
+
+
+{% block content %}
+{% include 'layouts/header.html' %}
+<main class="main-product_detail">
+    <section class="section-1">
+        {{product.name}}
+        {{product.description}}
+        {{product.price}}
+    </section>
+</main>
+{% endblock %}

@@ -6,7 +6,7 @@
         <div class="container-logo-categories">
             <a href="{% url 'home' %}" class="logo1">
                 <img src="{% static 'icons/logo1.svg' %}" alt="logo 1">
-                <p>Luxe</p>
+                Luxe
             </a>
         </div>
 
@@ -65,7 +65,7 @@
             {% if user.is_authenticated %}
             <div class="container-dropdown-profile">
                 <div class="dropdown dropdownProfile" onclick="toggleDropdownMovil()">
-                    <button class="dropbtn">{{user.acronym_name}}</button>
+                    <button class="dropbtn-user">{{user.acronym_name}}</button>
                     <div class="dropdown-content" id="myDropdown">
                         <div class="container-info-user-menu">
                             <div class="container-info-user-names">

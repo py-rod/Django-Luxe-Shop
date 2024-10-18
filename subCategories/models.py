@@ -8,7 +8,7 @@ class SubCategories(models.Model):
     title = models.CharField(max_length=100, blank=False, unique=True)
     series = models.ForeignKey(
         Categories, default='', blank=False, on_delete=models.CASCADE)
-    slug = models.SlugField(default='', unique=True, blank=False)
+    slug_sub = models.SlugField(default='', unique=True, blank=False)
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now=True)
 
@@ -19,4 +19,4 @@ class SubCategories(models.Model):
         return self.title
 
     def get_products_of_the_subcategory(self):
-        return reverse('products_of_the_subcategory', args=[self.series.slug, self.slug])
+        return reverse('products_of_the_subcategory', args=[self.series.slug_cate, self.slug_sub])
