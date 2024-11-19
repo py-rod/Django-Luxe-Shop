@@ -255,8 +255,10 @@
         width: 100%;
         min-width: 280px;
         z-index: 1;
+        top: 40.5px;
         left: auto;
         right: 0px;
+        bottom: auto;
         border-radius: 5px;
         border: 1px solid rgb(206, 206, 206);
     }
@@ -303,7 +305,7 @@
         border-radius: 0 0 5px 5px;
     }
 
-    .dropdown.open .dropdown-content {
+    #myDropdown.open {
         display: block;
         margin-top: 20px;
     }
