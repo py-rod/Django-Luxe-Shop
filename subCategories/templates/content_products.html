@@ -19,11 +19,16 @@
 
         <div class="container-all-items">
             <div class="content-filters">
-                <form action="" class="form-filter">
+                <form action="{{products_of_the_subcategory.get_products_of_the_subcategory}}" method="get"
+                    class="form-filter">
                     {% csrf_token %}
                     <div class="container-filter-button">
                         <p>Filters:</p>
-                        <button type="submit">Apply</button>
+                        <div class="container-btns-form">
+                            <a href="{% url 'products_of_the_subcategory' category.slug_cate subcategory.slug_sub %}"
+                                class="btn-clear-form">Clear all</a>
+                            <button type="submit" class="btn-apply">Apply</button>
+                        </div>
                     </div>
 
                     <details class="details-brands" open>
@@ -32,11 +37,11 @@
 
                         <div class="diferent-brand">
                             <div>
-                                <input type="checkbox" name="" id="">
+                                <input type="checkbox" name="brand" value="{{brand.brand}}"
+                                    {% if brand.brand in selected_brand %}check{% endif %}>
                                 <p>{{brand.brand}}</p>
                             </div>
                             <span class="count">{{brand.count}}</span>
-
                         </div>
                         {% endfor %}
                     </details>
@@ -44,10 +49,11 @@
                     <details class="details-price">
                         <summary>Price</summary>
 
-                        <select name="" id="">
-                            <option value="" selected="selected">Select option</option>
-                            <option value="">Mayor a Menor</option>
-                            <option value="">Menor a Mayor</option>
+                        <select name="price_order" id="">
+                            <option value="" {% if not price_order %}selected{% endif %}>Select option</option>
+                            <option value="desc" {% if price_order == 'desc' %}selected{% endif %}>Mayor a Menor
+                            </option>
+                            <option value="asc" {% if price_order == 'asc' %}selected{% endif %}>Menor a Mayor</option>
                         </select>
                     </details>
                 </form>
@@ -78,7 +84,10 @@
                     {% endfor %}
                 </ul>
             </div>
+
+
         </div>
+
     </section>
 </main>
 {% endblock %}

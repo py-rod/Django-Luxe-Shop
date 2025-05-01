@@ -80,7 +80,22 @@
         color: var(--text-200);
     }
 
-    button {
+    .container-btns-form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .btn-clear-form {
+        display: block;
+        width: fit-content;
+        text-decoration: none;
+        color: gray;
+        font-size: .9rem;
+    }
+
+    .btn-apply {
         display: block;
         width: fit-content;
         height: fit-content;
@@ -96,7 +111,7 @@
     }
 
 
-    button:hover {
+    .btn-apply:hover {
         color: var(--color3);
     }
 }
@@ -222,7 +237,7 @@
     margin: 0;
     display: grid;
     gap: 30px;
-    grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(216px, 1fr));
 }
 
 

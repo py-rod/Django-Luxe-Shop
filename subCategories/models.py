@@ -5,7 +5,7 @@ from django.urls import reverse
 
 
 class SubCategories(models.Model):
-    title = models.CharField(max_length=100, blank=False, unique=True)
+    title = models.CharField(max_length=100, blank=False, unique=False)
     series = models.ForeignKey(
         Categories, default='', blank=False, on_delete=models.CASCADE)
     slug_sub = models.SlugField(default='', unique=True, blank=False)
@@ -16,7 +16,7 @@ class SubCategories(models.Model):
         verbose_name_plural = 'Sub Categories'
 
     def __str__(self):
-        return self.title
+        return f'{self.series.slug_cate} - {self.title}'
 
     def get_products_of_the_subcategory(self):
         return reverse('products_of_the_subcategory', args=[self.series.slug_cate, self.slug_sub])
