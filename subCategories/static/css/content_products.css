@@ -132,7 +132,7 @@
     }
 
     summary::after {
-        content: '⌄';
+        content: '+';
         color: var(--text-100);
         font-size: 1.5rem;
         position: absolute;
@@ -140,6 +140,7 @@
         left: auto;
         right: 0;
     }
+
 
     div {
         display: flex;
@@ -173,6 +174,9 @@
     }
 }
 
+.details-brands[open] summary::after {
+    content: '-';
+}
 
 .details-price {
     color: var(--text-100);
@@ -188,7 +192,7 @@
     }
 
     summary::after {
-        content: '⌄';
+        content: '+';
         color: var(--text-100);
         font-size: 1.5rem;
         position: absolute;
@@ -215,6 +219,10 @@
     }
 }
 
+
+.details-price[open] summary::after {
+    content: '-';
+}
 
 
 /* PRODUCTS */
