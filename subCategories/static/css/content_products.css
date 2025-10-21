@@ -212,10 +212,35 @@
         color: #000;
         cursor: pointer;
         margin-top: 10px;
+
+        /* remove arrows */
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: none;
     }
 
-    select>option:hover {
-        background-color: rebeccapurple !important;
+    /* remove arrows */
+    select::-ms-expand {
+        display: none;
+    }
+
+    /* remove arrows */
+    select::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+    select:focus {
+        outline: none;
+    }
+
+    select>option {
+        padding: 5px;
+    }
+
+    select>option:checked {
+        background: linear-gradient(var(--color2)) !important;
     }
 }
 
