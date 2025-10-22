@@ -106,27 +106,27 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # DEFAULT DATABASE
 
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': env('DATABASE_NAME'),
-    #     'USER': env('DATABASE_USER'),
-    #     'PASSWORD': env('DATABASE_PASSWORD'),
-    #     # O la dirección de tu servidor PostgreSQL
-    #     'HOST': env('DATABASE_HOST'),
-    #     'PORT': '5432',  # Puerto por defecto de PostgreSQL
-    # },
-
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-
 # DATABASES = {
-#     'default': dj_database_url.parse('postgresql://luxeshop_user:2ryayff0lz2Qr5EUv6HXz2RJMcDn2NQB@dpg-d3rsbfjuibrs73b8j490-a.oregon-postgres.render.com/luxeshop')
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.postgresql',
+#     #     'NAME': env('DATABASE_NAME'),
+#     #     'USER': env('DATABASE_USER'),
+#     #     'PASSWORD': env('DATABASE_PASSWORD'),
+#     #     # O la dirección de tu servidor PostgreSQL
+#     #     'HOST': env('DATABASE_HOST'),
+#     #     'PORT': '5432',  # Puerto por defecto de PostgreSQL
+#     # },
+
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+
+DATABASES = {
+    'default': dj_database_url.parse('postgresql://luxeshop_user:2ryayff0lz2Qr5EUv6HXz2RJMcDn2NQB@dpg-d3rsbfjuibrs73b8j490-a.oregon-postgres.render.com/luxeshop')
+}
 
 
 # Password validation
