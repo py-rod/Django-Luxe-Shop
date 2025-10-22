@@ -47,7 +47,6 @@ DEFAULT_APPS = [
 
 THIRD_PARTY_APPS = [
     'django_recaptcha',
-    'django_browser_reload',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -76,8 +75,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # DJANGO ALLOW
     'allauth.account.middleware.AccountMiddleware',
-    # FOR TAILWIND
-    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -109,27 +106,27 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # DEFAULT DATABASE
 
 
-# DATABASES = {
-#     # 'default': {
-#     #     'ENGINE': 'django.db.backends.postgresql',
-#     #     'NAME': env('DATABASE_NAME'),
-#     #     'USER': env('DATABASE_USER'),
-#     #     'PASSWORD': env('DATABASE_PASSWORD'),
-#     #     # O la dirección de tu servidor PostgreSQL
-#     #     'HOST': env('DATABASE_HOST'),
-#     #     'PORT': '5432',  # Puerto por defecto de PostgreSQL
-#     # },
-
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://luxeshop_user:2ryayff0lz2Qr5EUv6HXz2RJMcDn2NQB@dpg-d3rsbfjuibrs73b8j490-a.oregon-postgres.render.com/luxeshop')
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': env('DATABASE_NAME'),
+    #     'USER': env('DATABASE_USER'),
+    #     'PASSWORD': env('DATABASE_PASSWORD'),
+    #     # O la dirección de tu servidor PostgreSQL
+    #     'HOST': env('DATABASE_HOST'),
+    #     'PORT': '5432',  # Puerto por defecto de PostgreSQL
+    # },
+
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+
+# DATABASES = {
+#     'default': dj_database_url.parse('postgresql://luxeshop_user:2ryayff0lz2Qr5EUv6HXz2RJMcDn2NQB@dpg-d3rsbfjuibrs73b8j490-a.oregon-postgres.render.com/luxeshop')
+# }
 
 
 # Password validation
@@ -200,17 +197,24 @@ AUTH_USER_MODEL = "users.CustomUser"
 RECAPTCHA_PUBLIC_KEY = env('RECAPTCHA_PUBLIC_KEY')
 RECAPTCHA_PRIVATE_KEY = env('RECAPTCHA_PRIVATE_KEY')
 SILENCED_SYSTEM_CHECKS = ['django_recaptcha.recaptcha_test_key_error']
-RECAPTCHA_REQUIRED_SCORE = 0.85
+RECAPTCHA_MIN_SCORE = 0.7
 
 # EMAIL
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_FROM = env("EMAIL_FROM")
-EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-PASSWORD_RESET_TIMEOUT = 1440
+
+if DEBUG:
+
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_FROM = env("EMAIL_FROM")
+    EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+    EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+    PASSWORD_RESET_TIMEOUT = 1600
+
+SITE_UTL = '127.0.0.1:8000'
 
 # FOR DJANGO RELOAD
 INTERNAL_IPS = [

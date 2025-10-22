@@ -24,6 +24,7 @@ def activate_email(request, user, to_email):
         "token": account_activation_token.make_token(user),
         "protocol": "https" if request.is_secure() else "http"
     })
+    print(message)
     email = EmailMessage(mail_sub, message, to=[to_email])
     # lA DECLARACION DE ABAJO SIRVE PARA QUE EL CORREO NO LLEGUE COMO TEXTO PLANO Y SE LE PUEDA DAR STYLOS
     email.content_subtype = "html"

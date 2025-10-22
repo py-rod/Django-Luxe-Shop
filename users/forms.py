@@ -7,7 +7,6 @@ from django_recaptcha.fields import ReCaptchaField, ReCaptchaV3
 
 class UserCreationForm(UserCreationForm):
     captcha = ReCaptchaField(widget=ReCaptchaV3(attrs={
-        'required_score': 0.80,
         'size': 'compact',
         'theme': 'dark',
         'action': 'signup',
@@ -36,7 +35,6 @@ class AuthenticationForm(AuthenticationForm):
         attrs={"type": "email", "autocomplete":  True, "autofocus": True})
 
     captcha = ReCaptchaField(widget=ReCaptchaV3(attrs={
-        'required_score': 0.80,
         'size': 'compact',
         'theme': 'dark',
         'action': 'signin'
