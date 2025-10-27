@@ -25,7 +25,7 @@
 
 .container-logo-categories {
 
-    .logo1 {
+    & .logo1 {
         display: flex;
         align-items: center;
         font-size: 2.25rem;
@@ -34,7 +34,7 @@
         color: var(--color1);
     }
 
-    .logo1>img {
+    & img {
         display: block;
         width: 50px;
         height: 50px;
@@ -52,12 +52,12 @@
 
     /* DROPDOWN CATEGORIES */
 
-    .dropdown-categories {
+    & .dropdown-categories {
         --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
         --clippy-hover: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
-    .dropdown-categories::after {
+    & .dropdown-categories::after {
         content: "";
         display: block;
         background-color: var(--color1);
@@ -68,16 +68,16 @@
         transition: clip-path .2s;
     }
 
-    .dropdown-categories.visible::after {
+    & .dropdown-categories.visible::after {
         clip-path: var(--clippy-hover);
     }
 
-    .dropdown-categories:not(.visible):hover::after {
+    & .dropdown-categories:not(.visible):hover::after {
         --clippy: var(--clippy-hover);
     }
 
     /* BUTTON CATEGORIES */
-    button {
+    & button {
         display: flex;
         align-items: center;
         border: none;
@@ -92,8 +92,8 @@
     }
 
 
-    .dropdown-content-categories {
-        display: none;
+    & .dropdown-content-categories {
+        visibility: hidden;
         position: absolute;
         background-color: white;
         width: 100%;
@@ -105,67 +105,73 @@
         margin: 0 auto;
         z-index: 1;
         color: black;
-        top: 75px;
+        top: 74px;
         box-shadow: 0 5px 5px -5px rgb(90, 90, 90);
+
+        & .row-categories {
+
+            & ul {
+                display: grid;
+                gap: 20px;
+                grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
+                padding: 20px;
+                list-style-type: none;
+                text-align: center;
+            }
+
+            & li {
+                width: 100%;
+                margin: 0 auto;
+            }
+
+            & details {
+                color: var(--text-200);
+            }
+
+            & details:hover {
+                color: var(--color1);
+            }
+
+            & details>a {
+                text-decoration: none;
+                display: block;
+                width: fit-content;
+                color: var(--text-200);
+                margin: 0 auto;
+                margin-top: 10px;
+                --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+                --clippy-hover: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+
+            & details>a::after {
+                content: "";
+                display: block;
+                background-color: var(--color1);
+                width: 100%;
+                height: 2px;
+                margin-top: 1px;
+                clip-path: var(--clippy);
+                transition: clip-path .2s;
+            }
+
+            & details>a:hover {
+                color: var(--color1);
+            }
+
+            & details>a:hover::after {
+                --clippy: var(--clippy-hover);
+            }
+        }
     }
 
-    .row-categories {
-
-        ul {
-            display: grid;
-            gap: 20px;
-            grid-template-columns: repeat(auto-fill, minmax(16em, 1fr));
-            padding: 20px;
-            list-style-type: none;
-            text-align: center;
-        }
-
-        li {
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        details {
-            color: var(--text-200);
-        }
-
-        details:hover {
-            color: var(--color1);
-        }
-
-        details>a {
-            text-decoration: none;
-            display: block;
-            width: fit-content;
-            color: var(--text-200);
-            margin: 0 auto;
-            margin-top: 10px;
-            --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
-            --clippy-hover: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        }
-
-        details>a::after {
-            content: "";
-            display: block;
-            background-color: var(--color1);
-            width: 100%;
-            height: 2px;
-            margin-top: 1px;
-            clip-path: var(--clippy);
-            transition: clip-path .2s;
-        }
-
-        details>a:hover {
-            color: var(--color1);
-        }
-
-        details>a:hover::after {
-            --clippy: var(--clippy-hover);
-        }
+    & .dropdown-categories.visible .dropdown-content-categories {
+        visibility: visible;
     }
+
+
 
     /* SEARCH BAR */
-    .container-searchbar {
+    & .container-searchbar {
         display: flex;
         align-items: center;
         position: relative;
@@ -177,13 +183,13 @@
         transition: border-color .3s;
         --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
 
-        input {
+        & input {
             width: 100%;
             outline: none;
             border: none;
         }
 
-        .btn-search {
+        & .btn-search {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -196,7 +202,7 @@
         }
     }
 
-    .container-searchbar::after {
+    & .container-searchbar::after {
         content: "";
         display: block;
         position: absolute;
@@ -209,11 +215,11 @@
         transition: clip-path .2s;
     }
 
-    .container-searchbar:hover {
+    & .container-searchbar:hover {
         --clippy: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
-    .container-searchbar:focus-within {
+    & .container-searchbar:focus-within {
         border-bottom: 2px solid var(--color1);
         padding: 0px 0px 0px 10px;
     }
@@ -228,8 +234,8 @@
     gap: 20px;
 
 
-    .header-link-cart,
-    .header-link-account {
+    & .header-link-cart,
+    & .header-link-account {
         display: block;
         width: fit-content;
         transition: ease .3s;
@@ -242,8 +248,8 @@
     }
 
 
-    .header-link-cart::after,
-    .header-link-account::after {
+    & .header-link-cart::after,
+    & .header-link-account::after {
         content: "";
         display: block;
         background-color: var(--color1);
@@ -254,8 +260,8 @@
         transition: clip-path .2s;
     }
 
-    .header-link-cart:hover,
-    .header-link-account:hover {
+    & .header-link-cart:hover,
+    & .header-link-account:hover {
         --clippy: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
@@ -272,7 +278,7 @@
     user-select: none;
 
 
-    .dropdown-content {
+    & .dropdown-content {
         display: none;
         position: absolute;
         background-color: white;
@@ -287,13 +293,13 @@
         border: 1px solid rgb(206, 206, 206);
     }
 
-    .container-info-user-menu {
+    & .container-info-user-menu {
         gap: 10px;
         padding: 15px;
         border-bottom: 1px solid var(--bg-300);
     }
 
-    .container-info-user-names>p {
+    & .container-info-user-names>p {
         font-size: 0.9rem;
         margin: 0;
         color: var(--text-color2);
@@ -302,13 +308,13 @@
         text-overflow: ellipsis;
     }
 
-    .container-info-user-names>:first-child {
+    & .container-info-user-names>:first-child {
         font-weight: 700;
         color: var(--color1);
         margin-bottom: 5px;
     }
 
-    .dropdown-content a {
+    & .dropdown-content a {
         color: var(--text-100);
         padding: 15px 16px;
         text-decoration: none;
@@ -319,22 +325,22 @@
         transition: background-color .2s;
     }
 
-    .dropdown-content a:hover {
+    & .dropdown-content a:hover {
         background-color: var(--text-100);
         color: white;
     }
 
-    .dropdown-content>a:last-child {
+    & .dropdown-content>a:last-child {
         border-top: 1px solid var(--bg-300);
         border-radius: 0 0 5px 5px;
     }
 
-    #myDropdown.open {
+    & #myDropdown.open {
         display: block;
         margin-top: 20px;
     }
 
-    .dropbtn-user {
+    & .dropbtn-user {
         height: 45px;
         width: 45px;
         padding: 5px;

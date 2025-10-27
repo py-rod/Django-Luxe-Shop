@@ -1,12 +1,13 @@
-function myFunction() {
-    let dropdownContent = document.getElementById("dropCategories");
-    let dropdownCategories = document.querySelector(".dropdown-categories");
+const dropdown = document.querySelector(".dropdown-categories");
+const btn = dropdown.querySelector("button");
 
-    if (dropdownContent.style.display === "block") {
-        dropdownContent.style.display = "none";
-        dropdownCategories.classList.remove("visible");
-    } else {
-        dropdownContent.style.display = "block";
-        dropdownCategories.classList.add("visible");
+btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("visible");
+});
+
+document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("visible");
     }
-}
+});
